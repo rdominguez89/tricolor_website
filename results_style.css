@@ -39,6 +39,12 @@ td.lost {
   font-weight: bold;
 }
 
+td.draw {
+  background-color: #555151; /* gray */
+  color: white;
+  font-weight: bold;
+}
+
 /* MULTIPLE TABLES */
 .tables-container {
   display: flex;
@@ -57,7 +63,7 @@ td.lost {
 
 .table-box td:nth-child(2) {
   white-space: nowrap;  /* Prevent line breaks for team names */
-  text-align: left;     /* Optional: align names to left */
+  text-align: center;     /* Optional: align names to left */
 }
 
 .table-box h3 {
@@ -123,4 +129,13 @@ td.lost {
 #table-popup th {
   background: linear-gradient(to right, green, white, red);
   color: black;
+}
+
+.last-results .table-box {
+  min-width: 220px;            /* width of each table */
+  flex: 1 1 20px;             /* allow wrapping */
+  background: #333;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid gold;
 }

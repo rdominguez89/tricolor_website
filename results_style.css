@@ -121,7 +121,7 @@ td.draw {
 }
 
 #table-popup th, #table-popup td {
-  padding: 20px;       /* slightly larger for readability */
+  padding: 40px;       /* slightly larger for readability */
   border: 1px solid white;
   white-space: nowrap;  /* keep team names on a single line */
 }
@@ -132,10 +132,11 @@ td.draw {
 }
 
 .last-results .table-box {
-  min-width: 220px;            /* width of each table */
-  flex: 1 1 20px;             /* allow wrapping */
+  min-width: 320px;            /* width of each table */
+  flex: 1 1 220px;             /* allow wrapping */
   background: #333;
   padding: 10px;
   border-radius: 8px;
   border: 2px solid gold;
 }
+

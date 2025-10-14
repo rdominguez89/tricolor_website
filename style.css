@@ -10,7 +10,7 @@ header {
   background: linear-gradient(to right, green, white, red);
   color: black;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 15px 30px;
 }
@@ -94,6 +94,10 @@ nav .submenu:hover {
   display: block;
 }
 
+/* Adjust submenu position to account for taller items */
+nav .menu li:hover > .submenu {
+  top: calc(100% - 5px); /* Bring submenu closer to parent */
+}
 
 
 /* MAIN */

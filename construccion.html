@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Página en Construcción - Club Deportivo Tricolor Plazuela</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: gold;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: gold;
+    }
+
+    main p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        max-width: 600px;
+        }
+
+    .icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      animation: blink 1.5s infinite;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div id="header-container"></div>
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="icon">🛠️</div>
+    <h1>Página en Construcción</h1>
+    <p>Estamos trabajando para mejorar nuestro sitio.<br>
+       Pronto podrás disfrutar de la información completa del Club Deportivo Tricolor Plazuela.</p>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

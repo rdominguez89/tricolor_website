@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: white;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(to right, green, white, red);
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+/* Header Logo */
+header .logo {
+  width: 70px;        /* adjust as needed */
+  height: 70px;       /* keep same width & height */
+  object-fit: cover;  /* ensure image fills the circle */
+  border-radius: 50%; /* makes it a perfect circle */
+  border: 3px solid gold; /* optional: team color border */
+  margin-right: 15px; /* spacing from nav */
+}
+
+/* Base nav */
+nav .menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+nav .menu li {
+  position: relative;
+}
+
+/* Main links */
+nav a {
+  margin-left: 0; /* handled by gap now */
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  background: gold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: black;
+  color: white;
+}
+
+/* Submenu */
+/* Submenu */
+nav .submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;  /* align exactly below the parent */
+  left: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  display: none;
+  min-width: 180px;
+  z-index: 999; /* make sure it’s on top */
+}
+
+nav .submenu li {
+  margin: 0; /* no gap between items */
+}
+
+nav .submenu a {
+  background: gold;
+  color: black;
+  border-radius: 6px;
+  padding: 6px 12px;
+  display: block;
+}
+
+nav .submenu a:hover {
+  background: black;
+  color: white;
+}
+
+/* Keep submenu visible when hovering parent OR submenu itself */
+nav .menu li:hover > .submenu,
+nav .submenu:hover {
+  display: block;
+}
+
+
+
+/* MAIN */
+main {
+  padding: 30px;
+  text-align: center;
+}
+
+.club-info {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.pictures {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 20px;
+}
+
+.pictures img {
+  width: 140px;
+  border: 4px solid gold;
+  border-radius: 10px;
+}
+
+/* Modal for enlarging pictures */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border: 4px solid gold;
+  border-radius: 10px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: gold;
+  cursor: pointer;
+}
+
+.anuncio {
+  margin-top: 40px;
+}
+
+.anuncio iframe {
+  width: 90%;
+  height: 1150px;
+  border: 3px solid gold;
+  border-radius: 10px;
+}
+
+.results {
+  margin-top: 40px;
+}
+
+.results iframe {
+  width: 90%;
+  height: 1500px;
+  border: 3px solid gold;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+footer a {
+  color: gold;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  color: red;
+}

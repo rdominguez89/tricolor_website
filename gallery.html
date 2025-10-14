@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galería - Tricolor Football Club</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallery_style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <div id="header-container"></div>
+  <script>
+    fetch('header.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('header-container').innerHTML = html)
+      .catch(err => console.error('Error loading header:', err));
+  </script>
+
+  <!-- MAIN -->
+  <main>
+    <h1>Galería de Fotos - CD Tricolor Plazuela</h1>
+
+    <div class="gallery-grid">
+      <img src="images/team_picture_third.webp" alt="Team Picture 3">
+      <img src="images/team_picture_second.webp" alt="Team Picture 2">
+      <img src="images/team_picture_kids.webp" alt="Team Picture kids">
+      <img src="images/team_picture_senior.webp" alt="Team Picture senior">
+      <img src="images/team_picture_first.webp" alt="Team Picture 1">
+      <!-- Add more images as needed -->
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <span class="close" id="modal-close">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <a id="modal-download" href="#" download class="download-btn">Descargar</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('footer-container').innerHTML = html)
+      .catch(err => console.error('Error loading footer:', err));
+  </script>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDownload = document.getElementById('modal-download');
+    const modalClose = document.getElementById('modal-close');
+
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalDownload.href = img.src;
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', e => {
+      if(e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Elecciones - Club Deportivo Tricolor Plazuela</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .candidatos, .trice, .mensaje {
+        background: black;
+        border: 2px solid gold;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 25px auto;
+        max-width: 600px;
+        }
+
+    .candidatos h2, .trice h2 {
+        background: gold;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+        }
+
+    .candidatos ul, .trice ul {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0 0 0;
+        }
+
+    .candidatos li, .trice li {
+        padding: 5px 0;
+        font-weight: bold;
+        }
+
+    .mensaje {
+        font-size: 18px;
+        line-height: 1.5;
+        background: #222;
+        }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div id="header-container"></div>
+  <script>
+    // Load header from external file
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="club-info">
+      <h1>Elecciones Club Deportivo Tricolor Plazuela</h1>
+      <p><strong>Fecha:</strong> 11 de Octubre del 2025</p>
+      <p><strong>Horario:</strong> Desde 15:00 a 19:00 hrs.</p>
+      <p><strong>Lugar:</strong> En nuestro estadio</p>
+    </section>
+
+    <section class="candidatos">
+      <h2>Candidatos</h2>
+      <ul>
+        <li>Juan P. Maldonado</li>
+        <li>Jorge Monardes</li>
+        <li>Alejandro Viera V.</li>
+        <li>Jose E. Trigo</li>
+        <li>Orlando Catejo M.</li>
+      </ul>
+    </section>
+
+    <section class="trice">
+      <h2>TRICEL</h2>
+      <ul>
+        <li>Cecilia Huerta P.</li>
+        <li>Jimmy Jiménez M.</li>
+        <li>Ariel Pasten G.</li>
+      </ul>
+    </section>
+
+    <section class="mensaje">
+      <p>
+        Se invita a todos los Socios inscritos en nuestros registros, a participar de este proceso eleccionario.  
+        <br><br>
+        <strong>Somos Tricolor.<br>Somos Chalecos.</strong>
+      </p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+  <script>
+    // Load header from external file
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

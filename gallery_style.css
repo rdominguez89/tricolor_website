@@ -1,0 +1,77 @@
+    main {
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      color: gold;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border: 4px solid gold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid gold;
+      border-radius: 10px;
+    }
+
+    .modal .download-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: gold;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .modal .download-btn:hover {
+      background: black;
+      color: gold;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: gold;
+      cursor: pointer;
+    }

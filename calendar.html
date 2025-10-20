@@ -5,6 +5,7 @@
   <title>Calendario - Club Deportivo Tricolor Plazuela</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="calendar_style.css">
+
 </head>
 <body>
   <!-- HEADER -->
@@ -58,35 +59,33 @@
 
   let currentDate = new Date();
 
-  // --- Earliest allowed date: September 2025 ---
-  const minDate = new Date(2025, 8, 1); // months are 0-indexed → 8 = Sept
+  const minDate = new Date(2025, 8, 1); // Earliest allowed date: September 2025
 
-  // --- Events ---
   const events = {
     "2025-10-02": [
-      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00", info:"" },
+      { title: "Entrenamiento<br>Sub 40<br>Prof. Lima", time: "20:00 - 22:00", info:"" },
       { title: "Arriendo Privado", time: "22:00 - 23:00", info: "Cancha reservada para partido amistoso." }
     ],
     "2025-10-16": [
-      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00" }
+      { title: "Entrenamiento<br>Sub 40<br>Prof. Lima", time: "20:00 - 22:00", info:""  }
     ],
     "2025-10-23": [
-      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00" }
+      { title: "EEntrenamiento<br>Sub 40<br>Prof. Lima", time: "20:00 - 22:00", info:""  }
     ],
     "2025-10-18": [
-      { title: "Beneficio", time: "13:00 - 00:00" }
+      { title: "Beneficio", time: "13:00 - 00:00", info:""  }
     ],
     "2025-10-05": [
-      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+      { title: "Campeonato<br>Clausura<br>2025", time: "13:00 - 20:00", info: "" }
     ],
     "2025-10-12": [
-      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+      { title: "Campeonato<br>Clausura<br>2025", time: "13:00 - 20:00", info: "" }
     ],
     "2025-10-19": [
-      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00" }
+      { title: "Campeonato<br>Clausura<br>2025", time: "13:00 - 20:00", info:"" }
     ],
     "2025-10-26": [
-      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+      { title: "Campeonato<br>Clausura<br>2025", time: "13:00 - 20:00", info: "" }
     ]
   };
 
@@ -126,12 +125,18 @@
           const evDiv = document.createElement("div");
           evDiv.classList.add("event");
 
+          // Truncate title to 4 letters on small screens
+          let displayTitle = ev.title;
+          if (window.innerWidth <= 600) {
+            displayTitle = ev.title.substring(0, 4);
+          }
+
           evDiv.innerHTML = `
-            ${ev.title}<br>${ev.time}
-            ${ev.info ? `<span class="info-icon">ℹ️</span><div class="tooltip">${ev.info}</div>` : ""}
+            <span class="event-text" title="${ev.title}">${displayTitle}</span><br>
+            ${ev.time}
+            ${ev.info ? `<span class="info-icon">ℹ</span><div class="tooltip">${ev.info}</div>` : ""}
           `;
 
-          // Allow click to toggle tooltip (for mobile)
           const infoIcon = evDiv.querySelector(".info-icon");
           if (infoIcon) {
             infoIcon.addEventListener("click", (e) => {
@@ -149,6 +154,9 @@
 
     updateNavButtons();
   }
+
+  // Re-render on window resize to update truncated titles
+  window.addEventListener("resize", () => renderCalendar(currentDate));
 
   function updateNavButtons() {
     const isAtMin = currentDate.getFullYear() === 2025 && currentDate.getMonth() === 8;

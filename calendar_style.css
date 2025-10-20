@@ -73,6 +73,15 @@
   line-height: 1.3;
 }
 
+.event-text {
+  display: block;
+  width: 100%;
+  white-space: nowrap;      /* prevent breaking to next line */
+  overflow: hidden;         /* hide overflow */
+  text-overflow: ellipsis;  /* show ... if too long */
+  vertical-align: middle;
+}
+
 /* Info icon */
 .event .info-icon {
   margin-left: 6px;
@@ -155,4 +164,14 @@
     width: 160px;
     font-size: 12px;
   }
+
+  .event-text {
+    white-space: normal;   /* allow wrapping */
+    overflow: hidden;
+    text-overflow: clip;
+    line-height: 1.2;
+  }
+  
 }
+
+

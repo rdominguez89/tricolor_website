@@ -1,0 +1,158 @@
+/* --- Calendar Specific --- */
+.calendar-container {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background: gold;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calendar-header button:hover:enabled {
+  background: black;
+  color: white;
+}
+
+.calendar-header h2 {
+  color: gold;
+  margin: 0;
+}
+
+.calendar-header button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  min-height: 90px;
+  transition: 0.3s;
+}
+
+.day:hover {
+  background: #333;
+}
+
+.day .date {
+  font-weight: bold;
+  font-size: 18px;
+  color: gold;
+}
+
+.event {
+  position: relative;
+  margin-top: 8px;
+  font-size: 14px;
+  color: white;
+  background: green;
+  border-radius: 6px;
+  padding: 3px 6px;
+  line-height: 1.3;
+}
+
+/* Info icon */
+.event .info-icon {
+  margin-left: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: gold;
+  display: inline-block;
+}
+
+/* Tooltip */
+.event .tooltip {
+  display: none;
+  position: absolute;
+  background: black;
+  color: gold;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  top: 120%;
+  left: 0;
+  width: 200px;
+  text-align: left;
+  z-index: 10;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+.event:hover .tooltip,
+.event.show-tooltip .tooltip {
+  display: block;
+}
+
+.day.empty {
+  background: transparent;
+}
+
+/* --- 📱 Responsive styles for phones --- */
+@media (max-width: 600px) {
+
+  .calendar-container {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .calendar-header button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .calendar-header h2 {
+    font-size: 20px;
+  }
+
+  .calendar {
+    grid-template-columns: repeat(2, 1fr); /* show 2 days per row on small screens */
+    gap: 6px;
+  }
+
+  .day {
+    min-height: 70px;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .day .date {
+    font-size: 16px;
+  }
+
+  .event {
+    font-size: 12px;
+    padding: 2px 5px;
+  }
+
+  .event .tooltip {
+    width: 160px;
+    font-size: 12px;
+  }
+}

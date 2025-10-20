@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario - Club Deportivo Tricolor Plazuela</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="calendar_style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <div id="header-container"></div>
+  <script>
+    // Load header from external file
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+
+  <!-- MAIN -->
+  <main>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth">← Mes anterior</button>
+        <h2 id="monthYear"></h2>
+        <button id="nextMonth">Mes siguiente →</button>
+      </div>
+      <div class="calendar" id="calendar"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+  <script>
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+
+<script>
+  const calendar = document.getElementById("calendar");
+  const monthYear = document.getElementById("monthYear");
+  const prevBtn = document.getElementById("prevMonth");
+  const nextBtn = document.getElementById("nextMonth");
+
+  const months = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
+  const daysOfWeek = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+
+  let currentDate = new Date();
+
+  // --- Earliest allowed date: September 2025 ---
+  const minDate = new Date(2025, 8, 1); // months are 0-indexed → 8 = Sept
+
+  // --- Events ---
+  const events = {
+    "2025-10-02": [
+      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00", info:"" },
+      { title: "Arriendo Privado", time: "22:00 - 23:00", info: "Cancha reservada para partido amistoso." }
+    ],
+    "2025-10-16": [
+      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00" }
+    ],
+    "2025-10-23": [
+      { title: "Entrenamiento Sub 40 Prof. Lima", time: "20:00 - 22:00" }
+    ],
+    "2025-10-18": [
+      { title: "Beneficio", time: "13:00 - 00:00" }
+    ],
+    "2025-10-05": [
+      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+    ],
+    "2025-10-12": [
+      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+    ],
+    "2025-10-19": [
+      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00" }
+    ],
+    "2025-10-26": [
+      { title: "Campeonato de Clausura 2025", time: "13:00 - 20:00", info: "" }
+    ]
+  };
+
+  function renderCalendar(date) {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    monthYear.textContent = `${months[month]} ${year}`;
+    calendar.innerHTML = "";
+
+    // Day names
+    daysOfWeek.forEach(dayName => {
+      const dayHeader = document.createElement("div");
+      dayHeader.textContent = dayName;
+      dayHeader.style.fontWeight = "bold";
+      dayHeader.style.color = "gold";
+      calendar.appendChild(dayHeader);
+    });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startDay = firstDay === 0 ? 7 : firstDay;
+
+    for (let i = 1; i < startDay; i++) {
+      const empty = document.createElement("div");
+      empty.classList.add("day", "empty");
+      calendar.appendChild(empty);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const div = document.createElement("div");
+      div.classList.add("day");
+      const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+      div.innerHTML = `<div class="date">${day}</div>`;
+
+      if (events[dateKey]) {
+        events[dateKey].forEach(ev => {
+          const evDiv = document.createElement("div");
+          evDiv.classList.add("event");
+
+          evDiv.innerHTML = `
+            ${ev.title}<br>${ev.time}
+            ${ev.info ? `<span class="info-icon">ℹ️</span><div class="tooltip">${ev.info}</div>` : ""}
+          `;
+
+          // Allow click to toggle tooltip (for mobile)
+          const infoIcon = evDiv.querySelector(".info-icon");
+          if (infoIcon) {
+            infoIcon.addEventListener("click", (e) => {
+              e.stopPropagation();
+              evDiv.classList.toggle("show-tooltip");
+            });
+          }
+
+          div.appendChild(evDiv);
+        });
+      }
+
+      calendar.appendChild(div);
+    }
+
+    updateNavButtons();
+  }
+
+  function updateNavButtons() {
+    const isAtMin = currentDate.getFullYear() === 2025 && currentDate.getMonth() === 8;
+    prevBtn.disabled = isAtMin;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    const prevMonth = new Date(currentDate);
+    prevMonth.setMonth(currentDate.getMonth() - 1);
+    if (prevMonth >= minDate) {
+      currentDate = prevMonth;
+      renderCalendar(currentDate);
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+  });
+
+  renderCalendar(currentDate);
+</script>
+
+</body>
+</html>

@@ -50,7 +50,7 @@
     </section> -->
 
     <section class="results">
-      <h2>Últimos resultados y Tabla de Posiciones</h2>
+      <h2>Últimos resultados y Tablas de Posiciones</h2>
       <!-- iframe to load results page -->
       <iframe src="results_webpage.html"></iframe>
     </section>
@@ -86,6 +86,54 @@
     if(e.target === modal) modal.style.display = 'none';
   });
 </script>
+
+  <!-- iframe auto-resize script -->
+  <script>
+    (function() {
+      const iframe = document.querySelector('.results iframe');
+      if (!iframe) return;
+
+      // Try to resize when iframe loads
+      function resizeFromIframe() {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          if (!doc) return;
+          const body = doc.body;
+          const html = doc.documentElement;
+          const height = Math.max(
+            body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight
+          );
+          iframe.style.height = height + 'px';
+        } catch (e) {
+          // If cross-origin, we can't access; fallback to postMessage or fixed min-height
+          console.warn('Could not access iframe content to auto-resize:', e);
+        }
+      }
+
+      // When the iframe loads, attempt to resize
+      iframe.addEventListener('load', () => {
+        resizeFromIframe();
+
+        // Observe mutations inside iframe to adjust height if content changes (same-origin only)
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          const observer = new MutationObserver(() => resizeFromIframe());
+          observer.observe(doc.body, { childList: true, subtree: true, attributes: true });
+        } catch (e) {
+          // ignore cross-origin errors
+        }
+      });
+
+      // Also listen for postMessage from iframe pages that can compute own height and send it
+      window.addEventListener('message', event => {
+        if (!event.data || typeof event.data !== 'object') return;
+        if (event.data.type === 'setHeight' && event.source === iframe.contentWindow) {
+          iframe.style.height = (event.data.height || 0) + 'px';
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>

@@ -174,9 +174,13 @@ main {
 
 .results iframe {
   width: 80%;
-  height: 1200px !important;;
+  height: auto;             /* allow JS to set the height */
+  min-height: 300px;       /* reasonable minimum */
   border: 3px solid gold;
   border-radius: 10px;
+  display: block;
+  overflow: hidden;        /* hide internal scrollbars if any */
+  margin: 0 auto;          /* center iframe inside .results */
 }
 
 /* FOOTER */

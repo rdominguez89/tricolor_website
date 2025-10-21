@@ -12,9 +12,34 @@ h2 {
 }
 
 .last-results table {
-  width: 50%;
-  margin: 20px auto;
+  width: 420px;           /* uniform table width for consistent sizing */
+  max-width: 420px;
+  margin: 0 auto;         /* center inside its grid cell */
   border-collapse: collapse;
+}
+
+/* Arrange Fecha tables two per row */
+.last-results .tables-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  gap: 20px 30px;
+  align-items: start;
+  justify-items: center; /* center grid items */
+  margin: 20px auto;     /* center the whole grid on the page */
+  max-width: 1000px;     /* constrain so centering is visible */
+  width: calc(100% - 40px);
+}
+
+/* If there is a single table in the last row (odd count), make it span both columns and center it */
+.last-results .tables-container > table:nth-last-child(1):nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+@media (max-width: 900px) {
+  .last-results .tables-container {
+    grid-template-columns: 1fr; /* single column on small screens */
+  }
 }
 
 .last-results th, .last-results td {
@@ -144,6 +169,21 @@ td.draw {
   color: black;
   font-weight: bold;
   padding-left: 10px; /* make number more visible */
+}
+
+/* Standings frame — used when standings are loaded into results pages
+   Keeps frame styling local to results pages (namespace via results_style.css) */
+.standings-frame {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 16px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  border: 3px solid gold;
+}
+
+.standings-frame .tables-container {
+  gap: 24px;
 }
 
 .last-results .table-box {

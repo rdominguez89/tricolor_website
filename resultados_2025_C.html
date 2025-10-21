@@ -108,13 +108,24 @@
         </div>
     </section>
 
-    <div id="standings-container"></div>
+    <div id="standings-container-B"></div>
     <script>
       // Load standings from external file
-      fetch('standings.html')
+      fetch('standings_B.html')
         .then(response => response.text())
         .then(html => {
-          document.getElementById('standings-container').innerHTML = html;
+          document.getElementById('standings-container-B').innerHTML = html;
+        })
+        .catch(err => console.error('Error loading standings:', err));
+    </script>
+
+    <div id="standings-container-A"></div>
+    <script>
+      // Load standings from external file
+      fetch('standings_A.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('standings-container-A').innerHTML = html;
         })
         .catch(err => console.error('Error loading standings:', err));
     </script>

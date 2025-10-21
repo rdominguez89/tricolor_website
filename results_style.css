@@ -155,3 +155,23 @@ td.draw {
   border: 2px solid gold;
 }
 
+/* Next rivals box - visually similar to table-box */
+.next-rivals {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #333;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid gold;
+  text-align: center;
+  font-weight: bold;
+}
+
+.next-rivals .team {
+  color: black;
+  background: #f1c40f; /* golden highlight for names */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+

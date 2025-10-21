@@ -20,13 +20,74 @@
 
   <div id="standings-container"></div>
   <script>
-    // Load standings from external file
-    fetch('standings_B.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('standings-container').innerHTML = html;
-      })
-      .catch(err => console.error('Error loading standings:', err));
+    // Load standings from external file and ensure popup overlay + handlers
+    (function() {
+      const container = document.getElementById('standings-container');
+      fetch('standings_B.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Standings not found');
+          return response.text();
+        })
+        .then(html => {
+          container.innerHTML = html;
+
+          // If overlay does not exist (partial didn't include it), create it
+          if (!document.getElementById('table-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.id = 'table-overlay';
+            overlay.style.display = 'none';
+            overlay.setAttribute('onclick', "this.style.display='none'");
+            const popup = document.createElement('div');
+            popup.id = 'table-popup';
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+          }
+
+          // Attach click handlers to any tables that appear inside the loaded standings
+          document.querySelectorAll('.table-box table').forEach(table => {
+            table.addEventListener('click', () => {
+              const overlay = document.getElementById('table-overlay');
+              const popup = document.getElementById('table-popup');
+              popup.innerHTML = table.outerHTML; // clone the clicked table
+              overlay.style.display = 'flex';
+            });
+          });
+        })
+        .catch(err => {
+          // Fallback: try loading the default standings file
+          console.error('Error loading standings_B.html:', err);
+          if (container.innerHTML.trim() === '') {
+            fetch('standings.html')
+              .then(r => r.text())
+              .then(html => {
+                container.innerHTML = html;
+                // attach handlers if needed (same as above)
+                if (!document.getElementById('table-overlay')) {
+                  const overlay = document.createElement('div');
+                  overlay.id = 'table-overlay';
+                  overlay.style.display = 'none';
+                  overlay.setAttribute('onclick', "this.style.display='none'");
+                  const popup = document.createElement('div');
+                  popup.id = 'table-popup';
+                  overlay.appendChild(popup);
+                  document.body.appendChild(overlay);
+                }
+                document.querySelectorAll('.table-box table').forEach(table => {
+                  table.addEventListener('click', () => {
+                    const overlay = document.getElementById('table-overlay');
+                    const popup = document.getElementById('table-popup');
+                    popup.innerHTML = table.outerHTML;
+                    overlay.style.display = 'flex';
+                  });
+                });
+              })
+              .catch(e => console.error('Also failed to load fallback standings:', e));
+          }
+        });
+    })();
   </script>
+  <div class="next-rivals">
+    Próximos Rivales: <span class="team">Gonzalo Vial</span> y <span class="team">Caracol</span>.
+  </div>
 </body>
 </html>

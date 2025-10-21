@@ -131,6 +131,21 @@ td.draw {
   color: black;
 }
 
+/* Highlight only the position cell (first column) for top 4 rows in standings tables */
+.standings .table-box tr.pos-1 td:first-child,
+.standings .table-box tr.pos-2 td:first-child,
+.standings .table-box tr.pos-3 td:first-child,
+.standings .table-box tr.pos-4 td:first-child,
+#table-popup tr.pos-1 td:first-child,
+#table-popup tr.pos-2 td:first-child,
+#table-popup tr.pos-3 td:first-child,
+#table-popup tr.pos-4 td:first-child {
+  background-color: #2ecc71; /* green */
+  color: black;
+  font-weight: bold;
+  padding-left: 10px; /* make number more visible */
+}
+
 .last-results .table-box {
   min-width: 320px;            /* width of each table */
   flex: 1 1 220px;             /* allow wrapping */

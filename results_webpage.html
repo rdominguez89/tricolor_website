@@ -22,13 +22,31 @@
 
   <section class="video">
     <h2>Tiro libre para el 3-0 parcial de la Primera serie</h2>
-    <video controls width="600">
-      <source src="videos/tricolor_vial_3_0.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div class="video-container" id="video-container">
+      <div class="video-placeholder">
+        <div class="play-button">▶</div>
+        <span>Click para reproducir</span>
+      </div>
+    </div>
   </div>
 
   <div id="standings-container"></div>
+
+  <script>
+    document.querySelector('.video-placeholder').addEventListener('click', function() {
+      const videoContainer = document.getElementById('video-container');
+      const video = document.createElement('video');
+      video.controls = true;
+      video.width = 600;
+      const source = document.createElement('source');
+      source.src = 'videos/tricolor_vial_3_0.mp4';
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      videoContainer.innerHTML = '';
+      videoContainer.appendChild(video);
+      video.play();
+    });
+  </script>
   <script>
     // Load standings from external file and ensure popup overlay + handlers
     (function() {

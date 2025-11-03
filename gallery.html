@@ -19,20 +19,77 @@
 
   <!-- MAIN -->
   <main>
-    <h1>Galería de Fotos - CD Tricolor Plazuela</h1>
+    <h1>Galería Multimedia - CD Tricolor Plazuela</h1>
 
-    <div class="gallery-grid">
-      <img src="images/primera.webp" alt="Team Picture 1">
-      <img src="images/segunda.webp" alt="Team Picture 2">
-      <img src="images/senior.webp" alt="Team Picture senior">
-      <img src="images/infantiles.webp" alt="Team Picture kids">
-      <img src="images/tercera.webp" alt="Team Picture 3">
-      <video controls width="300" class="gallery-video">
-        <source src="videos/tricolor_vial_3_0.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- Add more images as needed -->
-    </div>
+    <section class="gallery-section">
+      <h2>Imágenes</h2>
+      <div class="gallery-grid">
+        <div class="media-item">
+          <img src="images/logo_tricolor_b.webp" alt="Team Picture 1">
+          <p class="description">Logo Tricolor</p>
+        </div>
+        <div class="media-item">
+          <img src="images/hist_1.webp" alt="Team Picture 1">
+          <p class="description">Algunos ya no están, pero su recuerdo perdura</p>
+        </div>
+        <div class="media-item">
+          <img src="images/hist_2.webp" alt="Team Picture 1">
+          <p class="description">Primera Serie 2016</p>
+        </div>
+        <div class="media-item">
+          <img src="images/primera_b.webp" alt="Team Picture 1">
+          <p class="description">Primera Serie 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/primera_amistoso_america_2_11_2025.webp" alt="Team Picture 1">
+          <p class="description">Primera Serie Amistoso América 02.11.2025 Triunfo 1-3</p>
+        </div>
+        <div class="media-item">
+          <img src="images/beneficio_1.webp" alt="Team Picture 1">
+          <p class="description">Super Senior Beneficio</p>
+        </div>
+        <div class="media-item">
+          <img src="images/primera.webp" alt="Team Picture 1">
+          <p class="description">Primera Serie 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/segunda.webp" alt="Team Picture 2">
+          <p class="description">Segunda Serie 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/senior.webp" alt="Team Picture senior">
+          <p class="description">Senior Serie 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/infantiles.webp" alt="Team Picture kids">
+          <p class="description">Serie Infantil 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/tercera.webp" alt="Team Picture 3">
+          <p class="description">Tercera Serie 2025</p>
+        </div>
+        <div class="media-item">
+          <img src="images/senior_A_2025.webp" alt="Team Picture 3">
+          <p class="description">Senior Apertura Cuartos 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Videos</h2>
+      <div class="gallery-grid">
+        <div class="media-item">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <div class="play-button">▶</div>
+              <span>Click para reproducir</span>
+            </div>
+          </div>
+          <p class="description">Tiro libre para el 3-0 parcial vs Gonzalo Vial (Final 4-0)</p>
+        </div>
+        <!-- Add more videos as needed -->
+      </div>
+    </section>
   </main>
 
   <!-- Modal -->
@@ -74,27 +131,45 @@
       });
     });
 
-    // Handle video clicks
-    document.querySelectorAll('.gallery-grid video').forEach(video => {
-      video.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.style.display = 'none';
-        modalVideo.style.display = 'block';
-        modalVideo.querySelector('source').src = video.querySelector('source').src;
-        modalVideo.load(); // Need to call load() after changing source
-        modalDownload.href = video.querySelector('source').src;
+    // Handle video placeholder clicks
+    document.querySelectorAll('.video-placeholder').forEach(placeholder => {
+      placeholder.addEventListener('click', function() {
+        const videoContainer = placeholder.parentElement;
+        const video = document.createElement('video');
+        video.controls = true;
+        video.className = 'gallery-video';
+        
+        const source = document.createElement('source');
+        source.src = 'videos/tricolor_vial_3_0.mp4';
+        source.type = 'video/mp4';
+        
+        video.appendChild(source);
+        videoContainer.innerHTML = '';
+        videoContainer.appendChild(video);
+        video.play();
+
+        // Add click handler to the video for modal
+        video.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalImg.style.display = 'none';
+          modalVideo.style.display = 'block';
+          modalVideo.querySelector('source').src = source.src;
+          modalVideo.load();
+          modalVideo.play();
+          modalDownload.href = source.src;
+        });
       });
     });
 
     modalClose.addEventListener('click', () => {
       modal.style.display = 'none';
-      modalVideo.pause(); // Pause video when closing modal
+      modalVideo.pause();
     });
     
     modal.addEventListener('click', e => {
       if(e.target === modal) {
         modal.style.display = 'none';
-        modalVideo.pause(); // Pause video when closing modal
+        modalVideo.pause();
       }
     });
   </script>

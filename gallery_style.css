@@ -3,9 +3,13 @@
       text-align: center;
     }
 
-    h1 {
+    h1, h2 {
       color: gold;
       margin-bottom: 30px;
+    }
+
+    .gallery-section {
+      margin-bottom: 50px;
     }
 
     .gallery-grid {
@@ -14,6 +18,23 @@
       gap: 20px;
       max-width: 1200px;
       margin: auto;
+    }
+
+    .media-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .description {
+      color: white;
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: center;
+      padding: 5px 10px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      border: 1px solid gold;
     }
 
     .gallery-grid img {
@@ -30,18 +51,54 @@
       transform: scale(1.05);
     }
 
-    .gallery-grid video.gallery-video {
+    .video-container {
       width: 100%;
       height: 200px;
-      object-fit: cover;
+      margin: 0 auto;
+      background: #000;
+      position: relative;
       border: 4px solid gold;
       border-radius: 10px;
+      overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s;
     }
 
-    .gallery-grid video.gallery-video:hover {
+    .video-container:hover {
       transform: scale(1.05);
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      transition: background-color 0.3s;
+    }
+
+    .video-placeholder:hover {
+      background: #222;
+    }
+
+    .play-button {
+      font-size: 48px;
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .video-placeholder span {
+      color: gold;
+      font-size: 16px;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     /* Modal */

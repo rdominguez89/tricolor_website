@@ -45,10 +45,10 @@
     <img id="modal-img" src="" alt="">
     </div>
 
-    <!-- <section class="anuncio">
+    <section class="anuncio">
       <h2>Anuncio</h2>
-      <iframe src="09_11_2025_A_temp.html"></iframe>
-    </section> -->
+      <iframe src="Felicitaciones_2025_C.html"></iframe>
+    </section>
 
     <section class="song">
       <iframe src="https://suno.com/embed/5f03a481-9b02-4e90-9d15-bf8834fd8d5c" 
@@ -142,6 +142,26 @@
         }
       });
     })();
+  </script>
+
+  <script>
+    function resizeAnuncioIframe() {
+      const iframe = document.querySelector('.anuncio iframe');
+      if (!iframe) return;
+
+      try {
+        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        iframe.style.height = innerDoc.body.scrollHeight + "px";
+      } catch (e) {
+        console.warn("⚠ Cannot auto-resize iframe: cross-domain restrictions");
+      }
+    }
+
+    // Resize on load
+    window.addEventListener("load", resizeAnuncioIframe);
+    // Resize whenever iframe loads new content
+    const anuncio_iframe = document.querySelector('.anuncio iframe');
+    if (anuncio_iframe) anuncio_iframe.addEventListener("load", resizeAnuncioIframe);
   </script>
 
 </body>

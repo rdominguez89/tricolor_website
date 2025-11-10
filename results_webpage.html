@@ -9,25 +9,25 @@
 <body>
   <div class="standings-frame">
   <section class="last-results">
-    <h2>Última Fecha (26.10.2025)</h2>
+    <h2>Última Fecha (09.11.2025)</h2>
       <table>
-          <tr><th>Fecha 6</th><th>Score</th></tr>
-          <tr><td>Tricolor vs Gonzalo Vial (Tercera Serie)</td><td class="draw">1 - 1</td></tr>
-          <tr><td>Tricolor vs Gonzalo Vial (Segunda Serie)</td><td class="won">1 - 0</td></tr>
-          <tr><td>Tricolor vs Gonzalo Vial (Infantil)</td><td class="won">2 - 1</td></tr>
-          <tr><td>Tricolor vs Gonzalo Vial (Senior)</td><td class="lost">0 - 1</td></tr>
-          <tr><td>Tricolor vs Gonzalo Vial (Primera Serie)</td><td class="won">4 - 1</td></tr>
+          <tr><th>Fecha 7</th><th>Score</th></tr>
+          <tr><td>Caracol vs Tricolor (Tercera Serie)</td><td class="won">0 - 1</td></tr>
+          <tr><td>Caracol vs Tricolor (Segunda Serie)</td><td class="draw">0 - 0</td></tr>
+          <tr><td>Caracol vs Tricolor (Infantil)</td><td class="won">0 - 3</td></tr>
+          <tr><td>Caracol vs Tricolor (Senior)</td><td class="draw">0 - 0</td></tr>
+          <tr><td>Caracol vs Tricolor (Primera Serie)</td><td class="lost">8 - 4</td></tr>
       </table>
   </section>
 
   <section class="video">
-    <h2>Tiro libre para el 3-0 parcial de la Primera serie</h2>
+    <!-- <h2>Tiro libre para el 3-0 parcial de la Primera serie</h2>
     <div class="video-container" id="video-container">
       <div class="video-placeholder">
         <div class="play-button">▶</div>
         <span>Click para reproducir</span>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div id="standings-container"></div>
@@ -51,7 +51,7 @@
     // Load standings from external file and ensure popup overlay + handlers
     (function() {
       const container = document.getElementById('standings-container');
-      fetch('standings_B.html')
+      fetch('standings_B_2025_C.html')
         .then(response => {
           if (!response.ok) throw new Error('Standings not found');
           return response.text();
@@ -84,7 +84,7 @@
         })
         .catch(err => {
           // Fallback: try loading the default standings file
-          console.error('Error loading standings_B.html:', err);
+          console.error('Error loading standings_B_2025_C.html:', err);
           if (container.innerHTML.trim() === '') {
             fetch('standings.html')
               .then(r => r.text())
@@ -116,7 +116,7 @@
     })();
   </script>
   <div class="next-rivals">
-    Próximo y Último Rival: <span class="team">Caracol</span>
+    Series Clasificadas Cuartos de Final: <span class="team">Tercera e Infantil</span>
   </div>
 </body>
 </html>

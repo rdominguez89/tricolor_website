@@ -2,8 +2,7 @@ import pandas as pd
 import re
 from pathlib import Path
 
-INPUT_FILE = "TABLAGRUPOBclausura2025.xlsx"
-OUTPUT_FILE = "standings.html"
+INPUT_FILES = ["TABLAGRUPOBclausura2025.xlsx", "TABLAGRUPOAclausura2025.xlsx"]
 
 CATEGORIES = ["TERCERA", "SEGUNDA", "INFANTILES", "SENIOR", "PRIMERA"]
 
@@ -125,7 +124,7 @@ def build_html(tables_dict):
         for _, row in df.iterrows():
             highlight = f'class="pos-{row.Pos}"' if row.Pos <= 4 else ""
             html += f"""        <tr {highlight}>
-          <td>{row.Pos}</td><td>{row.Team}</td><td>{row.PJ}</td><td>{row.DG}</td><td>{row.Pts}</td>
+          <td>{row.Pos}</td><td>{row.Team}</td><td>{row.PJ}</td><td>{'+' if row.DG >= 0 else ''}{row.DG}</td><td>{row.Pts}</td>
         </tr>
 """
 
@@ -155,23 +154,47 @@ def build_html(tables_dict):
 
     return html
 
+def get_files_names(INPUT_FILES,year):
+    OUTPUT_FILES = []
+    for INPUT_FILE in INPUT_FILES:
+        output_file = 'standings_'
+        if "TABLAGRUPOB" in INPUT_FILE:
+            output_file += f'B_{year}_'
+        elif "TABLAGRUPOA" in INPUT_FILE:
+            output_file += f'A_{year}_'
+        else:
+            print('No group found {INPUT_FILE}')
+            exit(1)
+        if "clausura" in INPUT_FILE:
+            output_file += 'C.xlsx'
+        elif "apertura" in INPUT_FILE:
+            output_file += 'A.xlsx'
+        else:
+            print('No tournament found {INPUT_FILE}')
+            exit(1)
+        OUTPUT_FILES.append(output_file)
+
+    return OUTPUT_FILES
+
 
 def main():
-    df = pd.read_excel(INPUT_FILE, sheet_name=0, header=None)
+    OUTPUT_FILES = get_files_names(INPUT_FILES,2025)
+    for INPUT_FILE, OUTPUT_FILE in zip(INPUT_FILES, OUTPUT_FILES):
+        df = pd.read_excel(INPUT_FILE, sheet_name=0, header=None)
 
-    tables_raw = find_tables(df)
+        tables_raw = find_tables(df)
 
-    final_tables = {}
-    for cat, block in tables_raw.items():
-        try:
-            tab = compute_table(block, cat)
-            final_tables[cat] = tab.sort_values('Pts',ascending=False)
-        except Exception as e:
-            print(f"Error processing {cat}: {e}")
+        final_tables = {}
+        for cat, block in tables_raw.items():
+            try:
+                tab = compute_table(block, cat)
+                final_tables[cat] = tab.sort_values('Pts',ascending=False)
+            except Exception as e:
+                print(f"Error processing {cat}: {e}")
 
-    html = build_html(final_tables)
-    Path(OUTPUT_FILE).write_text(html, encoding="utf-8")
-    print(f"\n✅ Created {OUTPUT_FILE}")
+        html = build_html(final_tables)
+        Path(OUTPUT_FILE).write_text(html, encoding="utf-8")
+        print(f"\n✅ Created {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":

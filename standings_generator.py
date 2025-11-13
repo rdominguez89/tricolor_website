@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 from pathlib import Path
+from datetime import date
 
 INPUT_FILES = ["TABLAGRUPOBclausura2025.xlsx", "TABLAGRUPOAclausura2025.xlsx"]
 
@@ -52,7 +53,7 @@ def parse_match(val):
     return None
 
 
-def compute_table(df, cat):
+def compute_table(df, INPUT_FILE, cat):
     match_cols = [c for c in df.columns if re.match(r"^\d+$", str(c))]
     results = []
 
@@ -91,7 +92,7 @@ def compute_table(df, cat):
 
         dg = gf - gc
         if INPUT_FILE == "TABLAGRUPOBclausura2025.xlsx":
-            if cat == 'TERCERA' and (team == ' CAMINO VIEJO' or team == 'TRICOLOR'):pj+=1
+            if cat == 'TERCERA' and (team == 'CAMINO VIEJO' or team == 'TRICOLOR'):pj+=1
             if cat == 'SEGUNDA' and team == 'JUVENTUD': pts +=3
             if cat == 'PRIMERA':
                 if team == 'JUVENTUD': pts+=3; pj +=1
@@ -107,10 +108,10 @@ def compute_table(df, cat):
     return out
 
 
-def build_html(tables_dict):
-    html = """
+def build_html(tables_dict, group):
+    html = f"""
 <section class="standings">
-  <h2>Tablas de Posiciones Grupo B</h2>
+  <h2>Tablas de Posiciones Grupo {group} (Actualizada {date.today().strftime('%d.%m.%Y')})</h2>
   <div class="tables-container">
 """
 
@@ -166,9 +167,9 @@ def get_files_names(INPUT_FILES,year):
             print('No group found {INPUT_FILE}')
             exit(1)
         if "clausura" in INPUT_FILE:
-            output_file += 'C.xlsx'
+            output_file += 'C.html'
         elif "apertura" in INPUT_FILE:
-            output_file += 'A.xlsx'
+            output_file += 'A.html'
         else:
             print('No tournament found {INPUT_FILE}')
             exit(1)
@@ -179,7 +180,8 @@ def get_files_names(INPUT_FILES,year):
 
 def main():
     OUTPUT_FILES = get_files_names(INPUT_FILES,2025)
-    for INPUT_FILE, OUTPUT_FILE in zip(INPUT_FILES, OUTPUT_FILES):
+    for INPUT_FILE, OUTPUT_FILE, group in zip(INPUT_FILES, OUTPUT_FILES, ['B','A']):
+        if group == 'B': continue
         df = pd.read_excel(INPUT_FILE, sheet_name=0, header=None)
 
         tables_raw = find_tables(df)
@@ -187,12 +189,12 @@ def main():
         final_tables = {}
         for cat, block in tables_raw.items():
             try:
-                tab = compute_table(block, cat)
+                tab = compute_table(block, INPUT_FILE, cat)
                 final_tables[cat] = tab.sort_values('Pts',ascending=False)
             except Exception as e:
                 print(f"Error processing {cat}: {e}")
 
-        html = build_html(final_tables)
+        html = build_html(final_tables, group)
         Path(OUTPUT_FILE).write_text(html, encoding="utf-8")
         print(f"\n✅ Created {OUTPUT_FILE}")
 

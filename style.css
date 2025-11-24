@@ -369,6 +369,7 @@ footer a:hover {
     width: 100% !important;
     max-width: 100%;
     min-height: 350px;
+    max-height: 700px;
     border: 2px solid gold;
   }
 
@@ -433,9 +434,11 @@ footer a:hover {
     height: 40px;
   }
 
+
+
   nav a {
     padding: 4px 5px;
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .club-info h1 {
@@ -447,7 +450,7 @@ footer a:hover {
   }
 
   .pictures img {
-    width: 18%;
+    width: 15%;
     min-width: 50px;
     max-width: 60px;
   }

@@ -83,11 +83,10 @@
       </iframe>
     </section>
 
-    <section class="results">
+    <!-- <section class="results">
       <h2>Últimos resultados y Tablas de Posiciones</h2>
-      <!-- iframe to load results page -->
       <iframe src="results_webpage.html"></iframe>
-    </section>
+    </section> -->
   </main>
 
   <div id="footer-container"></div>
@@ -121,78 +120,7 @@
     });
   </script>
 
-  <!-- Iframe resize helper for auto-fitting content -->
-  <script>
-    // Resize iframe to fit content
-    function resizeIframe(iframe) {
-      if (!iframe) return;
 
-      try {
-        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-        if (innerDoc && innerDoc.body) {
-          const body = innerDoc.body;
-          const html = innerDoc.documentElement;
-
-          // Get the maximum height from various measurements
-          const contentHeight = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-          );
-
-          // On desktop, set the height to fit content
-          // On mobile (<=768px), let CSS handle it
-          if (window.innerWidth > 768) {
-            iframe.style.height = contentHeight + "px";
-          } else {
-            iframe.style.height = "auto";
-          }
-        }
-      } catch (e) {
-        // Cross-domain or other error - CSS will handle it
-        console.log("Cannot access iframe content (likely cross-domain)");
-      }
-    }
-
-    // Resize all iframes
-    function resizeAllIframes() {
-      const anuncioIframe = document.querySelector('.anuncio iframe');
-      const resultsIframe = document.querySelector('.results iframe');
-
-      resizeIframe(anuncioIframe);
-      resizeIframe(resultsIframe);
-    }
-
-    // Resize on load
-    window.addEventListener("load", () => {
-      setTimeout(resizeAllIframes, 100);
-      setTimeout(resizeAllIframes, 500);
-      setTimeout(resizeAllIframes, 1000);
-    });
-
-    // Resize on window resize
-    window.addEventListener("resize", resizeAllIframes);
-
-    // Listen for iframe loads
-    const anuncioIframe = document.querySelector('.anuncio iframe');
-    const resultsIframe = document.querySelector('.results iframe');
-
-    if (anuncioIframe) {
-      anuncioIframe.addEventListener("load", () => {
-        setTimeout(() => resizeIframe(anuncioIframe), 100);
-        setTimeout(() => resizeIframe(anuncioIframe), 500);
-      });
-    }
-
-    if (resultsIframe) {
-      resultsIframe.addEventListener("load", () => {
-        setTimeout(() => resizeIframe(resultsIframe), 100);
-        setTimeout(() => resizeIframe(resultsIframe), 500);
-      });
-    }
-  </script>
 
 
 

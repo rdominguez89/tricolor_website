@@ -17,12 +17,18 @@ header {
 
 /* Header Logo */
 header .logo {
-  width: 70px;        /* adjust as needed */
-  height: 70px;       /* keep same width & height */
-  object-fit: cover;  /* ensure image fills the circle */
-  border-radius: 50%; /* makes it a perfect circle */
-  border: 3px solid gold; /* optional: team color border */
-  margin-right: 15px; /* spacing from nav */
+  width: 70px;
+  /* adjust as needed */
+  height: 70px;
+  /* keep same width & height */
+  object-fit: cover;
+  /* ensure image fills the circle */
+  border-radius: 50%;
+  /* makes it a perfect circle */
+  border: 3px solid gold;
+  /* optional: team color border */
+  margin-right: 15px;
+  /* spacing from nav */
 }
 
 /* Base nav */
@@ -40,7 +46,8 @@ nav .menu li {
 
 /* Main links */
 nav a {
-  margin-left: 0; /* handled by gap now */
+  margin-left: 0;
+  /* handled by gap now */
   text-decoration: none;
   color: black;
   font-weight: bold;
@@ -61,18 +68,21 @@ nav a:hover {
 nav .submenu {
   list-style: none;
   position: absolute;
-  top: 100%;  /* align exactly below the parent */
+  top: 100%;
+  /* align exactly below the parent */
   left: 0;
   background: transparent;
   padding: 0;
   margin: 0;
   display: none;
   min-width: 180px;
-  z-index: 999; /* make sure it’s on top */
+  z-index: 999;
+  /* make sure it’s on top */
 }
 
 nav .submenu li {
-  margin: 0; /* no gap between items */
+  margin: 0;
+  /* no gap between items */
 }
 
 nav .submenu a {
@@ -89,14 +99,15 @@ nav .submenu a:hover {
 }
 
 /* Keep submenu visible when hovering parent OR submenu itself */
-nav .menu li:hover > .submenu,
+nav .menu li:hover>.submenu,
 nav .submenu:hover {
   display: block;
 }
 
 /* Adjust submenu position to account for taller items */
-nav .menu li:hover > .submenu {
-  top: calc(100% - 5px); /* Bring submenu closer to parent */
+nav .menu li:hover>.submenu {
+  top: calc(100% - 5px);
+  /* Bring submenu closer to parent */
 }
 
 
@@ -136,7 +147,7 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
 }
@@ -163,8 +174,8 @@ main {
 }
 
 .anuncio iframe {
-  width: 50%;
-  height: 600px;
+  width: 70%;
+  height: 750px;
   border: 3px solid gold;
   border-radius: 10px;
 }
@@ -175,13 +186,17 @@ main {
 
 .results iframe {
   width: 80%;
-  height: auto;             /* allow JS to set the height */
-  min-height: 300px;       /* reasonable minimum */
+  height: auto;
+  /* allow JS to set the height */
+  min-height: 300px;
+  /* reasonable minimum */
   border: 3px solid gold;
   border-radius: 10px;
   display: block;
-  overflow: hidden;        /* hide internal scrollbars if any */
-  margin: 0 auto;          /* center iframe inside .results */
+  overflow: hidden;
+  /* hide internal scrollbars if any */
+  margin: 0 auto;
+  /* center iframe inside .results */
 }
 
 /* FOOTER */
@@ -208,9 +223,185 @@ footer a:hover {
     height: 1100px;
   }
 }
+
 @media (max-width: 1046px) {
   .results iframe {
     height: 1450px;
   }
 }
 
+/* Tablet Responsive Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  header {
+    padding: 12px 20px;
+  }
+
+  header .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  nav .menu {
+    gap: 10px;
+  }
+
+  nav a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .pictures {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .pictures img {
+    width: 30%;
+    min-width: 200px;
+  }
+
+  .anuncio iframe {
+    width: 85%;
+  }
+
+  .results iframe {
+    width: 90%;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+
+  /* Header adjustments - keep horizontal */
+  header {
+    padding: 10px 15px;
+  }
+
+  header .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  /* Adjust navigation for mobile */
+  nav .menu {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  /* Submenu adjustments for mobile */
+  nav .submenu {
+    min-width: 150px;
+  }
+
+  nav .submenu a {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  /* Main content adjustments */
+  main {
+    padding: 15px;
+  }
+
+  .club-info {
+    font-size: 16px;
+  }
+
+  .club-info h1 {
+    font-size: 24px;
+  }
+
+  .club-info p {
+    font-size: 14px;
+  }
+
+  /* Pictures - keep horizontal but smaller */
+  .pictures {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pictures img {
+    width: 18%;
+    min-width: 60px;
+    max-width: 80px;
+  }
+
+  /* Anuncio iframe - full width on mobile */
+  .anuncio iframe {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+  }
+
+  .anuncio h2,
+  .results h2 {
+    font-size: 20px;
+  }
+
+  /* Results iframe - full width on mobile */
+  .results iframe {
+    width: 100%;
+    height: auto;
+    min-height: 800px;
+  }
+
+  /* Modal adjustments */
+  .modal img {
+    max-width: 95%;
+    max-height: 90%;
+  }
+
+  .modal .close {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+  }
+
+  /* Footer adjustments */
+  footer {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  footer a {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  header .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .club-info h1 {
+    font-size: 20px;
+  }
+
+  .club-info p {
+    font-size: 13px;
+  }
+
+  .pictures img {
+    width: 95%;
+  }
+
+  .anuncio h2,
+  .results h2 {
+    font-size: 18px;
+  }
+}

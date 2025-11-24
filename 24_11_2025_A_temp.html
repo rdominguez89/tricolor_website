@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cuartos de Final - Club Deportivo Tricolor Plazuela</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            text-shadow: 0 0 10px gold, 0 0 20px gold;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px gold;
+            }
+
+            to {
+                text-shadow: 0 0 20px gold, 0 0 30px yellow;
+            }
+        }
+
+        .club-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid gold;
+            margin: 30px auto;
+            width: 70%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gold;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(to right, green, white, red);
+            margin: 20px 0;
+            box-shadow: 0 0 10px gold;
+        }
+
+        .pictures {
+            margin-top: 40px;
+        }
+
+        /* Match logos */
+        .match-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-top: 20px;
+        }
+
+        .match-logos .club-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid gold;
+            object-fit: cover;
+            box-shadow: 0 0 20px gold;
+            transition: transform 0.3s ease;
+        }
+
+        .match-logos .club-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .vs {
+            font-size: 60px;
+            font-weight: bold;
+            color: gold;
+            text-shadow: 0 0 20px red, 0 0 40px yellow;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .tag {
+            background-color: green;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 0 10px green;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="font-size: 48px;">⚽ CUARTOS DE FINAL ⚽</h1>
+
+    <main>
+        <div class="club-info">
+            <span class="tag">Serie: Tercera Serie</span>
+            <p><strong>Día:</strong> Sábado 29 de Noviembre</p>
+            <p><strong>Hora:</strong> 16:00 HRS</p>
+            <p><strong>Partido:</strong> <span style="color:green;">Tri</span><span style="color:white;">co</span><span
+                    style="color:red;">lor</span> vs
+                <span style="color:rgb(247, 64, 64);">Atlético</span>
+            </p>
+            <p><strong>Lugar:</strong> Cancha Deportivo Doñihue</p>
+        </div>
+
+        <div class="club-info">
+            <span class="tag">Serie: Infantiles</span>
+            <p><strong>Día:</strong> Domingo 30 de Noviembre</p>
+            <p><strong>Hora:</strong> 16:00 HRS</p>
+            <p><strong>Partido:</strong> <span style="color:green;">Tri</span><span style="color:white;">co</span><span
+                    style="color:red;">lor</span> vs
+                <span style="color:rgb(247, 64, 64);">Atlético</span>
+            </p>
+            <p><strong>Lugar:</strong> Cancha Cerrillos</p>
+        </div>
+
+        <h2 style="font-size: 44px; margin-top: 30px;">¡Vamos Pueblo Chaleco!</h2>
+
+        <div class="pictures match-logos">
+            <img src="images/logo.webp" alt="Logo Tricolor" class="club-logo">
+            <span class="vs">VS</span>
+            <img src="images/atletico.webp" alt="Logo Atlético" class="club-logo">
+        </div>
+    </main>
+
+</body>
+
+</html>

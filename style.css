@@ -221,194 +221,321 @@ footer a:hover {
 }
 
 
+/* Tablet Responsive Styles */
+@media (max-width: 1024px) {
+  main {
+    padding: 20px;
+  }
+
+  .anuncio iframe {
+    width: 85%;
+  }
+
+  .results iframe {
+    width: 90%;
+  }
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
 
   /* Prevent horizontal overflow */
-  body {
-    overflow-x: hidden;
-    max-width: 100vw;
+  * {
+    box-sizing: border-box;
   }
 
-  /* Header adjustments - keep horizontal */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header adjustments */
   header {
-    padding: 8px 10px;
+    padding: 10px 8px;
+    flex-wrap: nowrap;
+    gap: 8px;
   }
 
   header .logo {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     margin-right: 8px;
+    flex-shrink: 0;
   }
 
-  /* Adjust navigation for mobile */
+  /* Navigation - better mobile layout */
+  nav {
+    flex: 1;
+    overflow-x: auto;
+  }
+
   nav .menu {
-    gap: 5px;
+    gap: 6px;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   nav a {
-    padding: 5px 6px;
-    font-size: 10px;
+    padding: 8px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    line-height: 1.3;
   }
 
-  /* Submenu adjustments for mobile */
+  /* Submenu adjustments */
   nav .submenu {
-    min-width: 130px;
+    min-width: 150px;
+    left: 0;
   }
 
   nav .submenu a {
-    font-size: 10px;
-    padding: 5px 8px;
+    font-size: 13px;
+    padding: 8px 12px;
   }
 
-  /* Main content adjustments */
+  /* Main content */
   main {
-    padding: 10px;
-    max-width: 100%;
-    overflow-x: hidden;
+    padding: 15px 10px;
+    width: 100%;
   }
 
   .club-info {
-    font-size: 14px;
-    max-width: 100%;
-    padding: 15px 10px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
   }
 
   .club-info h1 {
-    font-size: 20px;
-    margin: 10px 0;
+    font-size: 24px;
+    margin: 12px 0;
+    line-height: 1.3;
   }
 
   .club-info p {
-    font-size: 13px;
-    margin: 8px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.6;
   }
 
-  /* Pictures - keep horizontal but smaller */
+  /* Pictures section */
   .pictures {
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 15px 0;
+    margin: 20px 0;
+    padding: 0 5px;
   }
 
   .pictures img {
-    width: 18%;
-    min-width: 55px;
-    max-width: 70px;
+    width: calc(20% - 8px);
+    min-width: 60px;
+    max-width: 80px;
+    border: 3px solid gold;
   }
 
   /* Anuncio section */
   .anuncio {
-    margin: 20px 0;
-    padding: 0 5px;
+    margin: 25px 0;
+    padding: 0;
+    width: 100%;
   }
 
   .anuncio h2 {
-    font-size: 18px;
+    font-size: 22px;
     margin: 15px 0;
   }
 
-  /* Anuncio iframe - full width on mobile with proper constraints */
   .anuncio iframe {
-    width: 100% !important;
+    width: 100%;
     max-width: 100%;
-    min-height: 350px;
-    max-height: 700px;
-    border: 2px solid gold;
-  }
-
-  /* Results section */
-  .results {
-    margin: 20px 0;
-    padding: 0 5px;
-  }
-
-  .results h2 {
-    font-size: 18px;
-    margin: 15px 0;
-  }
-
-  /* Results iframe - full width on mobile with proper constraints */
-  .results iframe {
-    width: 100% !important;
-    max-width: 100%;
-    height: auto !important;
-    min-height: 500px;
+    height: 500px;
+    min-height: 400px;
     border: 2px solid gold;
   }
 
   /* Song section */
   .song {
-    margin: 20px 0;
+    margin: 25px 0;
+    width: 100%;
   }
 
   .song iframe {
-    max-width: 100%;
+    width: 100%;
+    max-width: 280px;
+    height: 140px;
   }
 
-  /* Modal adjustments */
+  /* Results section */
+  .results {
+    margin: 25px 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .results h2 {
+    font-size: 22px;
+    margin: 15px 0;
+  }
+
+  .results iframe {
+    width: 100%;
+    max-width: 100%;
+    height: 1200px;
+    min-height: 800px;
+    border: 2px solid gold;
+  }
+
+  /* Modal */
   .modal img {
     max-width: 95%;
-    max-height: 85%;
+    max-height: 90%;
   }
 
   .modal .close {
-    top: 10px;
-    right: 15px;
-    font-size: 30px;
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
   }
 
-  /* Footer adjustments */
+  /* Footer */
+  footer {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  footer a {
+    display: inline-block;
+    margin: 5px 8px;
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile Devices (phones in portrait) */
+@media (max-width: 480px) {
+
+  /* Header - more compact */
+  header {
+    padding: 8px 5px;
+  }
+
+  header .logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 6px;
+  }
+
+  /* Navigation - smaller text */
+  nav a {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+
+  nav .submenu {
+    min-width: 130px;
+  }
+
+  nav .submenu a {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  /* Main content */
+  main {
+    padding: 12px 8px;
+  }
+
+  .club-info h1 {
+    font-size: 21px;
+    margin: 10px 0;
+  }
+
+  .club-info p {
+    font-size: 15px;
+  }
+
+  /* Pictures - slightly smaller */
+  .pictures {
+    gap: 8px;
+    padding: 0 3px;
+  }
+
+  .pictures img {
+    width: calc(20% - 6px);
+    min-width: 55px;
+    max-width: 70px;
+    border: 2px solid gold;
+  }
+
+  /* Sections */
+  .anuncio h2,
+  .results h2 {
+    font-size: 20px;
+  }
+
+  .anuncio iframe {
+    height: 450px;
+    min-height: 350px;
+  }
+
+  .song iframe {
+    max-width: 240px;
+    height: 120px;
+  }
+
+  .results iframe {
+    height: 1000px;
+    min-height: 700px;
+  }
+
+  /* Footer */
   footer {
     padding: 12px 8px;
     font-size: 13px;
   }
 
   footer a {
-    display: inline-block;
-    margin: 4px;
+    margin: 4px 6px;
     font-size: 12px;
   }
 }
 
-/* Extra small mobile devices */
-@media (max-width: 480px) {
+/* Extra Small Devices (very small phones) */
+@media (max-width: 360px) {
   header .logo {
     width: 40px;
     height: 40px;
   }
 
   nav a {
-    padding: 4px 5px;
-    font-size: 8px;
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  nav .submenu a {
+    font-size: 10px;
+    padding: 6px 8px;
   }
 
   .club-info h1 {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .club-info p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .pictures img {
-    width: 15%;
+    width: calc(20% - 5px);
     min-width: 50px;
     max-width: 60px;
   }
 
-  .anuncio h2,
-  .results h2 {
-    font-size: 16px;
-  }
-
   .anuncio iframe {
-    min-height: 350px;
+    height: 400px;
   }
 
   .results iframe {
-    min-height: 500px;
+    height: 900px;
   }
 }

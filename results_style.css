@@ -12,9 +12,11 @@ h2 {
 }
 
 .last-results table {
-  width: 420px;           /* uniform table width for consistent sizing */
+  width: 420px;
+  /* uniform table width for consistent sizing */
   max-width: 420px;
-  margin: 0 auto;         /* center inside its grid cell */
+  margin: 0 auto;
+  /* center inside its grid cell */
   border-collapse: collapse;
 }
 
@@ -24,25 +26,30 @@ h2 {
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 20px 30px;
   align-items: start;
-  justify-items: center; /* center grid items */
-  margin: 20px auto;     /* center the whole grid on the page */
-  max-width: 1000px;     /* constrain so centering is visible */
+  justify-items: center;
+  /* center grid items */
+  margin: 20px auto;
+  /* center the whole grid on the page */
+  max-width: 1000px;
+  /* constrain so centering is visible */
   width: calc(100% - 40px);
 }
 
 /* If there is a single table in the last row (odd count), make it span both columns and center it */
-.last-results .tables-container > table:nth-last-child(1):nth-child(odd) {
+.last-results .tables-container>table:nth-last-child(1):nth-child(odd) {
   grid-column: 1 / -1;
   justify-self: center;
 }
 
 @media (max-width: 900px) {
   .last-results .tables-container {
-    grid-template-columns: 1fr; /* single column on small screens */
+    grid-template-columns: 1fr;
+    /* single column on small screens */
   }
 }
 
-.last-results th, .last-results td {
+.last-results th,
+.last-results td {
   border: 2px solid white;
   padding: 8px;
 }
@@ -53,19 +60,22 @@ h2 {
 }
 
 td.won {
-  background-color: #2ecc71; /* green */
+  background-color: #2ecc71;
+  /* green */
   color: black;
   font-weight: bold;
 }
 
 td.lost {
-  background-color: #e74c3c; /* red */
+  background-color: #e74c3c;
+  /* red */
   color: white;
   font-weight: bold;
 }
 
 td.draw {
-  background-color: #555151; /* gray */
+  background-color: #555151;
+  /* gray */
   color: white;
   font-weight: bold;
 }
@@ -87,8 +97,10 @@ td.draw {
 }
 
 .table-box td:nth-child(2) {
-  white-space: nowrap;  /* Prevent line breaks for team names */
-  text-align: center;     /* Optional: align names to left */
+  white-space: nowrap;
+  /* Prevent line breaks for team names */
+  text-align: center;
+  /* Optional: align names to left */
 }
 
 .table-box h3 {
@@ -101,7 +113,8 @@ td.draw {
   width: 200px;
 }
 
-.table-box th, .table-box td {
+.table-box th,
+.table-box td {
   border: 1px solid white;
   padding: 6px;
 }
@@ -116,13 +129,14 @@ td.draw {
 }
 
 #table-overlay {
-  display: none;            /* hidden by default */
+  display: none;
+  /* hidden by default */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -139,16 +153,21 @@ td.draw {
 }
 
 #table-popup table {
-  width: auto;        /* remove fixed width */
-  max-width: 100%;    /* never exceed overlay width */
+  width: auto;
+  /* remove fixed width */
+  max-width: 100%;
+  /* never exceed overlay width */
   border-collapse: collapse;
   margin: auto;
 }
 
-#table-popup th, #table-popup td {
-  padding: 40px;       /* slightly larger for readability */
+#table-popup th,
+#table-popup td {
+  padding: 40px;
+  /* slightly larger for readability */
   border: 1px solid white;
-  white-space: nowrap;  /* keep team names on a single line */
+  white-space: nowrap;
+  /* keep team names on a single line */
 }
 
 #table-popup th {
@@ -165,10 +184,12 @@ td.draw {
 #table-popup tr.pos-2 td:first-child,
 #table-popup tr.pos-3 td:first-child,
 #table-popup tr.pos-4 td:first-child {
-  background-color: #2ecc71; /* green */
+  background-color: #2ecc71;
+  /* green */
   color: black;
   font-weight: bold;
-  padding-left: 10px; /* make number more visible */
+  padding-left: 10px;
+  /* make number more visible */
 }
 
 /* Standings frame — used when standings are loaded into results pages
@@ -177,7 +198,7 @@ td.draw {
   max-width: 1200px;
   margin: 20px auto;
   padding: 16px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   border: 3px solid gold;
 }
@@ -187,8 +208,10 @@ td.draw {
 }
 
 .last-results .table-box {
-  min-width: 320px;            /* width of each table */
-  flex: 1 1 220px;             /* allow wrapping */
+  min-width: 320px;
+  /* width of each table */
+  flex: 1 1 220px;
+  /* allow wrapping */
   background: #333;
   padding: 10px;
   border-radius: 8px;
@@ -198,7 +221,8 @@ td.draw {
 /* Video container styles */
 .video-container {
   width: 600px;
-  height: 337px; /* 16:9 aspect ratio */
+  height: 337px;
+  /* 16:9 aspect ratio */
   margin: 0 auto;
   background: #000;
   position: relative;
@@ -255,8 +279,67 @@ td.draw {
 
 .next-rivals .team {
   color: black;
-  background: #f1c40f; /* golden highlight for names */
+  background: #f1c40f;
+  /* golden highlight for names */
   padding: 2px 8px;
   border-radius: 4px;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .standings-frame {
+    padding: 15px;
+    width: auto;
+    margin: 10px 0;
+  }
+
+  /* Fix disordered match info */
+  .match-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .match-card h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Fix summary text being too vertical */
+  .summary {
+    padding: 15px;
+    max-width: 100%;
+    width: auto;
+    font-size: 0.95rem;
+    margin: 10px 0;
+  }
+
+  /* Adjust tables for mobile */
+  .last-results .tables-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .last-results table {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .last-results th,
+  .last-results td {
+    padding: 4px;
+    font-size: 0.9rem;
+  }
+
+  /* Video container responsive */
+  .video-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}

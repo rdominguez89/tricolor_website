@@ -470,7 +470,7 @@ footer a:hover {
   /* Sections */
   .anuncio h2,
   .results h2 {
-    font-size: 20px;
+    font-size: 10px;
   }
 
   .anuncio iframe {
@@ -484,7 +484,7 @@ footer a:hover {
   }
 
   .results iframe {
-    height: 1000px;
+    height: 4000px;
     min-height: 700px;
   }
 

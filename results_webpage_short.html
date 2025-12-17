@@ -32,7 +32,7 @@
         /* Equipos y resultado */
         .match-info {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 0.5fr 0.5fr 0.5fr;
             /* 3 equal columns */
             gap: 20px;
             align-items: center;
@@ -97,6 +97,28 @@
             display: inline-block;
             box-shadow: 0 0 10px green;
             margin-bottom: 15px;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .match-info {
+                grid-template-columns: 1fr;
+                /* Single column on mobile */
+                gap: 15px;
+                text-align: center;
+            }
+
+            .match-info p {
+                text-align: center;
+                /* Center team names on mobile */
+            }
+
+            .result {
+                white-space: normal;
+                /* Allow result to wrap to 2 lines */
+                word-wrap: break-word;
+                max-width: 100%;
+            }
         }
     </style>
 </head>

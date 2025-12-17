@@ -31,11 +31,25 @@
 
         /* Equipos y resultado */
         .match-info {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            /* 3 equal columns */
+            gap: 20px;
+            align-items: center;
             font-size: 1.3rem;
             margin-bottom: 20px;
             color: #eee;
+        }
+
+        .match-info>* {
+            text-align: center;
+            /* Center content in each column */
+        }
+
+        .match-info p {
+            margin: 0;
+            text-align: left;
+            /* Keep team names left-aligned in first column */
         }
 
         /* Resúmenes */

@@ -7,6 +7,71 @@
   <link rel="icon" type="image/webp" href="images/logo.webp">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="results_style.css">
+  <style>
+    .summary_results_clausura_2025 {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .summary_results_clausura_2025 iframe {
+      width: 70%;
+      height: 2500px;
+      min-height: 400px;
+      border: 3px solid gold;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      overflow: max-content;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .summary_results_clausura_2025 iframe {
+        width: 85%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .summary_results_clausura_2025 {
+        margin: 25px 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .summary_results_clausura_2025 h2 {
+        font-size: 22px;
+        margin: 15px 0;
+      }
+
+      .summary_results_clausura_2025 iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 500px;
+        min-height: 400px;
+        border: 2px solid gold;
+      }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      .summary_results_clausura_2025 h2 {
+        font-size: 10px;
+      }
+
+      .summary_results_clausura_2025 iframe {
+        height: 450px;
+        min-height: 350px;
+      }
+    }
+
+    /* Extra Small Mobile */
+    @media (max-width: 360px) {
+      .summary_results_clausura_2025 iframe {
+        height: 400px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -21,6 +86,11 @@
       })
       .catch(error => console.error('Error loading header:', error));
   </script>
+
+  <section class="summary_results_clausura_2025">
+    <h2>Fase Final</h2>
+    <iframe src="results_webpage_short.html"></iframe>
+  </section>
 
   <div class="standings-frame">
     <section class="last-results">

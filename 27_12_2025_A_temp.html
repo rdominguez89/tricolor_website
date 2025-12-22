@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludos de Fin de Año - Tricolor Plazuela</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Tricolor Background: Green, White, Red */
+            background: linear-gradient(135deg, #006400 0%, #ffffff 50%, #cc0000 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            /* Soft white background */
+            border: 5px solid gold;
+            border-radius: 25px;
+            padding: 40px 25px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        /* Tricolor top border accent */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 8px;
+            background: linear-gradient(to right, green, white, red);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        h1 {
+            font-family: "Brush Script MT", "Comic Sans MS", cursive;
+            color: #cc0000;
+            /* Festive Red */
+            font-size: 3rem;
+            margin: 15px 0 20px 0;
+            text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .warm-text {
+            color: #006400;
+            /* Warm Green */
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background-color: #fff8e1;
+            /* Light gold tint */
+            border-left: 5px solid #cc0000;
+            border-right: 5px solid #006400;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .highlight-text {
+            color: #b8860b;
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .club-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid gold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .club-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .stars {
+            color: gold;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Decorative hearts */
+        .heart {
+            color: #cc0000;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            .card {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="stars">★★</div>
+        <h1>¡Un Abrazo Familia Tricolor!</h1>
+
+        <p class="warm-text">
+            Esperamos de todo corazón que hayan disfrutado una Navidad llena de risas, abrazos y mucho cariño en sus
+            hogares.
+        </p>
+
+        <p>
+            Para este año que se acerca, les deseamos pura salud, unión y momentos inolvidables junto a los que más
+            quieren. <span class="heart">♥</span>
+        </p>
+
+        <div class="highlight-box">
+            <span class="highlight-text">Porque ustedes SON el Club.</span>
+            El Tricolor Plazuela siempre estará caminando a su lado, en las buenas y en las malas. ¡Siempre fuertes y
+            unidos!
+        </div>
+
+        <p style="color: #555; font-size: 1.1rem;">
+            ¡Vamos con todo por este 2026!
+        </p>
+
+        <img src="images/logo.webp" alt="Logo Tricolor Plazuela" class="club-logo">
+    </div>
+
+</body>
+
+</html>

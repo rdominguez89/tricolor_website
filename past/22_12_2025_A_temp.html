@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiesta de Navidad - Tricolor Plazuela</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #8B0000;
+            /* Deep Christmas Red */
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 20% 20%, #a00000 0%, #600000 100%);
+            overflow: hidden;
+            /* Ensure no scrollbars on the body itself */
+        }
+
+        .card {
+            background-color: #fffaf0;
+            /* Creamy white */
+            border: 8px solid #228B22;
+            /* Forest Green border */
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Corners (pseudo-elements) */
+        .card::before,
+        .card::after {
+            content: "★";
+            position: absolute;
+            color: gold;
+            font-size: 30px;
+        }
+
+        .card::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .card::after {
+            top: 10px;
+            right: 10px;
+        }
+
+        h1 {
+            font-family: "Brush Script MT", "Comic Sans MS", cursive;
+            color: #cc0000;
+            font-size: 48px;
+            margin: 10px 0 5px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-family: "Brush Script MT", "Comic Sans MS", cursive;
+            color: #cc0000;
+            font-size: 32px;
+            margin: 0 0 20px 0;
+            font-weight: normal;
+        }
+
+        .main-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .details {
+            margin: 20px 0;
+        }
+
+        .date-time {
+            font-family: "Brush Script MT", "Comic Sans MS", cursive;
+            color: #cc0000;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .location {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-note {
+            color: #b30000;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+            margin: 30px auto;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .club-logo {
+            width: 80px;
+            height: 80px;
+            margin-top: 20px;
+            object-fit: cover;
+            border-radius: 50%;
+            /* Only if the logo is circular in design, otherwise remove */
+        }
+
+        /* Decorative elements */
+        .decoration {
+            font-size: 24px;
+            color: gold;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .date-time {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 20px;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1><span class="decoration">★</span> Fiesta de Navidad <span class="decoration">★</span></h1>
+        <h2>Tricolor Plazuela</h2>
+
+        <p class="main-text">
+            Asiste a nuestra celebración de navidad para<br>
+            nuestros niños, hasta 14 años de edad y<br>
+            socios del club
+        </p>
+
+        <div class="details">
+            <div class="date-time">26 Diciembre / 10:00 am hasta 19:30 pm</div>
+            <div class="location">Centro de eventos la guardia del zorro</div>
+        </div>
+
+        <div class="pricing-note">
+            COSTO ADICIONAL APLICA ÚNICAMENTE PARA ADULTOS.<br>
+            NIÑOS MENORES DE 14 AÑOS NO PAGAN CARGO EXTRA.
+        </div>
+
+        <img src="images/logo.webp" alt="Logo Tricolor Plazuela" class="club-logo">
+    </div>
+
+</body>
+
+</html>
